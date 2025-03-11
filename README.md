@@ -17,6 +17,7 @@ python3 manage.py runserver 192.168.50.206:8002
 ```
 
 ### Some important commands
+```
 python3 manage.py runserver 192.168.50.206:8002
 python manage.py migrate
 python manage.py createsuperuser
@@ -29,3 +30,4 @@ django-admin startproject dcrm
 
 virtualenv -p python3 venv
 python3 -m venv path/to/venv
+```
