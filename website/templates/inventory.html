@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-          {% if inventorys %}
+          {% if Inventory %}
           {% for inventory in inventorys %}
           <tr>
           <td><a href="{% url 'inventory' inventory.id %}"></a></td>
