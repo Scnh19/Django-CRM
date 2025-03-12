@@ -127,4 +127,4 @@ def customer_inventory(request, pk):
 		return render(request, 'inventory.html', {'customer_inventory':customer_inventory})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
-		return redirect('Inventory.html')
+		return redirect('inventory.html')
