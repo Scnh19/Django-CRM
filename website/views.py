@@ -75,6 +75,7 @@ def delete_record(request, pk):
 
 def add_record(request):
 	form = AddRecordForm(request.POST or None)
+	form = AddInventoryForm(request.POST or None)
 	if request.user.is_authenticated:
 		if request.method == "POST":
 			if form.is_valid():
