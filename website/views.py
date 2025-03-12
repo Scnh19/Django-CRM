@@ -123,8 +123,8 @@ def inventory(request):
 def customer_inventory(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
-		customer_inventory = Record.objects.get(id=pk)
-		return render(request, 'record.html', {'customer_inventory':customer_inventory})
+		customer_inventory = Inventory.objects.get(id=pk)
+		return render(request, 'inventory.html', {'customer_inventory':customer_inventory})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
