@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
-from .models import Record, inventory
+from .models import Record, Inventory
 
 
 def home(request):
@@ -104,7 +104,7 @@ def update_record(request, pk):
 def inventory(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
-		inventory = Record.objects.get(id=pk)
+		Inventory = Record.objects.get(id=pk)
 		return render(request, 'inventory.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
