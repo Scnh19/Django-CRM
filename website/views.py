@@ -101,7 +101,7 @@ def update_record(request, pk):
 		return redirect('home')
 
 
-def inventory(request, pk):
+def inventory(request):
 	inventorys = Inventory.objects.all()
 	# Check to see if logging in
 	if request.method == 'POST':
