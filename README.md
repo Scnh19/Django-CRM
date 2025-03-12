@@ -32,5 +32,3 @@ django-admin startproject dcrm
 virtualenv -p python3 venv
 
 ```
-
-lalallaala
