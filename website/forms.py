@@ -43,6 +43,14 @@ class AddRecordForm(forms.ModelForm):
     state = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
     zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Zipcode", "class":"form-control"}), label="")
 
+class AddInventoryForm(forms.ModelForm):
+    item_no = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Item No.", "class":"form-control"}), label="")
+    description = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Description", "class":"form-control"}), label="")
+    price = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Price", "class":"form-control"}), label="")
+    quantity = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Quantity", "class":"form-control"}), label="")
+    added_by = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Added By", "class":"form-control"}), label="")
+    updated_by = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Updated By", "class":"form-control"}), label="")
+    
     class Meta:
         model = Record
         model = Inventory
