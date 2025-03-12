@@ -101,7 +101,7 @@ def update_record(request, pk):
 		return redirect('home')
 
 
-def inventory(request):
+def inventory(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
 		inventory = Record.objects.get(id=pk)
