@@ -14,3 +14,14 @@ class Record(models.Model):
 
 	def __str__(self):
 		return(f"{self.first_name} {self.last_name}")
+
+class Inventory(models.Model):
+	created_at = models.DateTimeField(auto_now_add=True)
+	item_no = models.CharField(max_length=50)
+	description =  models.CharField(max_length=50)
+	price =  models.IntegerField()
+	quantity = models.IntegerField()
+	date_added =  models.DateTimeField(auto_now_add=True)
+	added_by =  models.CharField(max_length=100)
+	date_updated =  models.DateTimeField(auto_now_add=True)
+	updated_by =  models.CharField(max_length=100)
