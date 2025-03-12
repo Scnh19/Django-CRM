@@ -117,4 +117,4 @@ def inventory(request):
 			messages.success(request, "There Was An Error Logging In, Please Try Again...")
 			return redirect('home')
 	else:
-		return render(request, 'home.html', {'records':records})
+		return render(request, 'inventory.html', {'records':records})
