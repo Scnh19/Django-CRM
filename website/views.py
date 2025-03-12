@@ -101,11 +101,11 @@ def update_record(request, pk):
 		return redirect('home')
 
 
-def inventory(request, pk):
+def inventory(request):
 	if request.user.is_authenticated:
 		# Look Up Records
 		inventory = Record.objects.get(id=pk)
-		return render(request, 'record.html', {'inventory':inventory})
+		return render(request, 'inventory.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
