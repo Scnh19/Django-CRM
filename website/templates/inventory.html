@@ -22,7 +22,7 @@
           {% if inventorys %}
           {% for inventory in inventorys %}
           <tr>
-          <td><a href="{% url 'inventory' inventory.id %}"></a></td>
+          <td><a href="{% url 'Inventory' Inventory.id %}"></a></td>
           <td>{{ inventory.id }}</td>
           <td>{{ inventory.item_no }}</td>
           <td>{{ inventory.description }}</td>
