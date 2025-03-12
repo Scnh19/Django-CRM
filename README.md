@@ -12,7 +12,8 @@ Steps to run:
 4. run the server
 ```
 python3 -m venv .venv
-source .venv/bin/activate
+if linux ```source .venv/bin/activate```
+if windows ```.\.venv\Scripts\activate```
 python3 manage.py runserver 192.168.50.206:8002
 ```
 
