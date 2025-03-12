@@ -102,7 +102,7 @@ def update_record(request, pk):
 
 
 def inventory(request):
-	inventory = Inventory.objects.all()
+	inventorys = Inventory.objects.all()
 	# Check to see if logging in
 	if request.method == 'POST':
 		username = request.POST['username']
@@ -117,4 +117,4 @@ def inventory(request):
 			messages.success(request, "There Was An Error Logging In, Please Try Again...")
 			return redirect('home')
 	else:
-		return render(request, 'inventory.html', {'inventory':inventory})
+		return render(request, 'inventory.html', {'inventorys':inventorys})
