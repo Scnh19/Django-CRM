@@ -102,7 +102,7 @@ def update_record(request, pk):
 
 
 def inventory(request):
-	inventorys = Inventory.objects.all()
+	inventory = Inventory.objects.all()
 	# Check to see if logging in
 	if request.method == 'POST':
 		username = request.POST['username']
