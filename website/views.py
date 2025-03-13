@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
+from .forms import SignUpForm, AddRecordForm, AddInventoryForm
 from .models import Record, Inventory
 
 
@@ -22,7 +22,6 @@ def home(request):
 			return redirect('home')
 	else:
 		return render(request, 'home.html', {'records':records})
-
 
 
 def logout_user(request):
@@ -50,7 +49,6 @@ def register_user(request):
 	return render(request, 'register.html', {'form':form})
 
 
-
 def customer_record(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
@@ -59,7 +57,6 @@ def customer_record(request, pk):
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
-
 
 
 def delete_record(request, pk):
@@ -101,6 +98,8 @@ def update_record(request, pk):
 		return redirect('home')
 
 
+
+
 def inventory(request):
 	inventorys = Inventory.objects.all()
 	# Check to see if logging in
@@ -124,7 +123,46 @@ def customer_inventory(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
 		customer_inventory = Inventory.objects.get(id=pk)
-		return render(request, 'inventory.html', {'customer_inventory':customer_inventory})
+		return render(request, 'record_inventory.html', {'customer_inventory':customer_inventory})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
-		return redirect('inventory.html')
+		return redirect('home')
+	
+
+def delete_inventory(request, pk):
+	if request.user.is_authenticated:
+		delete_it = Inventory.objects.get(id=pk)
+		delete_it.delete()
+		messages.success(request, "Inventory Deleted Successfully...")
+		return redirect('inventory')
+	else:
+		messages.success(request, "You Must Be Logged In To Do That...")
+		return redirect('home')
+
+
+def add_inventory(request):
+	form = AddInventoryForm(request.POST or None)
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			if form.is_valid():
+				add_inventory = form.save()
+				messages.success(request, "Inventory Added...")
+				return redirect('inventory')
+		return render(request, 'add_inventory.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home')
+
+
+def update_inventory(request, pk):
+	if request.user.is_authenticated:
+		current_record = Inventory.objects.get(id=pk)
+		form = AddInventoryForm(request.POST or None, instance=current_record)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Record Has Been Updated!")
+			return redirect('inventory')
+		return render(request, 'update_inventory.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home')

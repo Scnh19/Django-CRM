@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<div class="card">
+  <div class="card-header"><strong>
+      {{ customer_inventory.id }}</strong>
+  </div>
+  <div class="card-body">
+    
+    
+<p class="card-text">
+<strong>Item No.: </strong>{{ customer_inventory.item_no }}</p>
+    
+<p class="card-text">
+<strong>Description: </strong>{{ customer_inventory.description }}
+</p>
+    
+<p class="card-text">
+<strong>Price: </strong>{{ customer_inventory.price }}</p>
+    
+<p class="card-text">
+<strong>Quantity: </strong>{{ customer_inventory.quantity }}</p>
+    
+<p class="card-text">
+<strong>Date Added: </strong>{{ customer_inventory.date_added }}</p>
+    
+<p class="card-text">
+<strong>Added By: </strong>{{ customer_inventory.added_by }}</p>
+    
+<p class="card-text">
+<strong>Date Update: </strong>{{ customer_inventory.date_updated }}</p>
+    
+<p class="card-text">
+<strong>Update by: </strong>{{ customer_inventory.updated_by }}</p>
+        
+        
+  </div>
+</div>
+<br/><br/>
+<a href="{% url 'inventory' %}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'delete_inventory' customer_inventory.id %}" class="btn btn-danger">Delete Inventory</a>
+
+<a href="{% url 'update_inventory' customer_inventory.id %}" class="btn btn-secondary">Update Inventory</a>
+
+{% endblock %}

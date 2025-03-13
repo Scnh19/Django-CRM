@@ -26,4 +26,19 @@ class Migration(migrations.Migration):
                 ('zipcode', models.CharField(max_length=20)),
             ],
         ),
+        migrations.CreateModel(
+            name='Inventory',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('item_no', models.CharField(max_length=50)),
+                ('description', models.CharField(max_length=50)),
+                ('price', models.IntegerField()),
+                ('quantity', models.IntegerField()),
+                ('date_added', models.DateTimeField(auto_now_add=True)),
+                ('added_by', models.CharField(max_length=100)),
+                ('date_updated', models.DateTimeField(auto_now_add=True)),
+                ('updated_by', models.CharField(max_length=100)),
+            ],
+        )
     ]

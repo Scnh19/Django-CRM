@@ -1,45 +1,46 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
-    {% if user.is_authenticated %}
-    <h1>Inventory</h1>
+{% if user.is_authenticated %}
 
-    <table class="table table-striped table-hover table-bordered table-sm">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Item No.</th>
-          <th scope="col">Description</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Date Addded</th>
-          <th scope="col">Addded By</th>
-          <th scope="col">Date Updated</th>
-          <th scope="col">Updated By</th>
-        </tr>
-      </thead>
-      <tbody>
-          {% if Inventory %}
-          {% for inventory in inventorys %}
-          <tr>
-          <td><a href="{% url 'inventory' inventorys.id %}"></a></td>
-          <td>{{ inventory.id }}</td>
-          <td>{{ inventory.item_no }}</td>
-          <td>{{ inventory.description }}</td>
-          <td>{{ inventory.price }}</td>
-          <td>{{ inventory.quantity }}</td>
-          <td>{{ inventory.date_added }}</td>
-          <td>{{ inventory.added_by }}</td>
-          <td>{{ inventory.date_updated }}</td>
-          <td>{{ inventory.updated_by }}</td>
-          <br/><br/>
-        </tr>
-          {% endfor %}
-          {% endif %}
+<h1>Inventory</h1>
+
+<table class="table table-striped table-hover table-bordered table-sm">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Item No.</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Date Addded</th>
+      <th scope="col">Addded By</th>
+      <th scope="col">Date Updated</th>
+      <th scope="col">Updated By</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% if inventorys %}
+  {% for inventory in inventorys %}
+    <tr>
+      <td>{{ inventory.id }}</td>
+      <td><a href="{% url 'record_inventory' inventory.id %}">{{ inventory.item_no }}</a></td>
+      <td>{{ inventory.description }}</td>
+      <td>{{ inventory.price }}</td>
+      <td>{{ inventory.quantity }}</td>
+      <td>{{ inventory.date_added }}</td>
+      <td>{{ inventory.added_by }}</td>
+      <td>{{ inventory.date_updated }}</td>
+      <td>{{ inventory.updated_by }}</td>
+    </tr>
+  {% endfor %}
+{% endif %}
     </tbody>
   </table>
 
-    {% else %}
+{% else %}
 
     <div class="col-md-6 offset-md-3">
         <h1>Login</h1>
