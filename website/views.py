@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm, AddInventoryForm
 from .models import Record, Inventory
 
+# login, register, logout, Record below
 
 def home(request):
 	records = Record.objects.all()
@@ -98,6 +99,7 @@ def update_record(request, pk):
 		return redirect('home')
 
 
+# Inventory Below
 
 
 def inventory(request):

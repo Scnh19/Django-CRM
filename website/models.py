@@ -25,6 +25,7 @@ class Inventory(models.Model):
 	added_by =  models.CharField(max_length=100)
 	date_updated =  models.DateTimeField(auto_now=True)
 	updated_by =  models.CharField(max_length=100)
+	thumbnail =  models.CharField(max_length=255)
 
 	def __str__(self):
 		return self.item_no

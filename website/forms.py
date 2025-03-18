@@ -54,8 +54,9 @@ class AddInventoryForm(forms.ModelForm):
     quantity = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Quantity", "class":"form-control"}), label="")
     added_by = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Added By", "class":"form-control"}), label="")
     updated_by = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Updated By", "class":"form-control"}), label="")
+    thumbnail = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"thumbnail", "class":"form-control"}), label="")
     
     class Meta:
         model = Inventory
-        fields = ['item_no', 'description', 'price', 'quantity', 'added_by', 'updated_by']
+        #fields = ['item_no', 'description', 'price', 'quantity', 'added_by', 'updated_by']
         exclude = ('date_added', 'date_updated')
